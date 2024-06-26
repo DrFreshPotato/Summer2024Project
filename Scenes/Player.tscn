@@ -1,0 +1,86 @@
+[gd_scene load_steps=16 format=3 uid="uid://34dtq542lmhs"]
+
+[ext_resource type="Texture2D" uid="uid://cy4g5n6ig5pi5" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Attack_Sword_Defence0_0.png" id="1_m2r46"]
+[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_vgq7n"]
+[ext_resource type="Texture2D" uid="uid://drels38u7fxdw" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Attack_Sword_Defence0_1.png" id="2_yn4dv"]
+[ext_resource type="Texture2D" uid="uid://biwghnk7j1cix" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Attack_Sword_Defence0_2.png" id="3_a4tju"]
+[ext_resource type="Texture2D" uid="uid://jpes7si4u64v" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Attack_Sword_Defence0_3.png" id="4_p84d0"]
+[ext_resource type="Texture2D" uid="uid://4tlxygpunm7b" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Idle_Sword_Defence0_0.png" id="5_2oord"]
+[ext_resource type="Texture2D" uid="uid://bf4lmtxktfl08" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Idle_Sword_Defence0_1.png" id="6_irouv"]
+[ext_resource type="Texture2D" uid="uid://b2js8sul8ab0d" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Idle_Sword_Defence0_2.png" id="7_7p013"]
+[ext_resource type="Texture2D" uid="uid://dkv2imnxf0pl1" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Idle_Sword_Defence0_3.png" id="8_3x8c8"]
+[ext_resource type="Texture2D" uid="uid://bxsrq463jsx4c" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Walk_Sword_Defence0_0.png" id="9_wwngb"]
+[ext_resource type="Texture2D" uid="uid://8fttgbtjv0ex" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Walk_Sword_Defence0_1.png" id="10_gkpmx"]
+[ext_resource type="Texture2D" uid="uid://c7avg0rk8icbb" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Walk_Sword_Defence0_2.png" id="11_3yp7m"]
+[ext_resource type="Texture2D" uid="uid://dkhk3v2dbvse7" path="res://Art Assets/Roguelike Dungeon - Asset Bundle/Sprites/Player/Sword/Defence0/Player_Walk_Sword_Defence0_3.png" id="12_4rlk3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m51d6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m2r46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yn4dv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a4tju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p84d0")
+}],
+"loop": true,
+"name": &"Player_Attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2oord")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_irouv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7p013")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3x8c8")
+}],
+"loop": true,
+"name": &"Player_Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_wwngb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gkpmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3yp7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4rlk3")
+}],
+"loop": true,
+"name": &"Player_Walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8beg3"]
+height = 58.0
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_vgq7n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m51d6")
+animation = &"Player_Idle"
+autoplay = "Player_Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 45)
+shape = SubResource("CapsuleShape2D_8beg3")
